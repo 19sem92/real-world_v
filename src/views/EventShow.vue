@@ -3,7 +3,7 @@
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
-      <h5>Organized by {{ event.organizer }}</h5>
+      <h5>Organized by {{ event.organizer ? event.organizer.name : "" }}</h5>
       <h5>Category: {{ event.category }}</h5>
     </div>
 
@@ -30,26 +30,17 @@
 </template>
 
 <script>
-import EventService from "@/services/EventService.js";
+import { mapState } from "vuex"
 export default {
   name: "EventShow",
   props: ["id"],
-  data() {
-    return {
-      event: {}
-    };
+  computed: {
+    ...mapState(["event"])
   },
-  created() {
-    EventService.getEvent(this.id)
-      .then(res => {
-        this.event = res.data;
-        console.log(this.event, "this.event");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  created () {
+    this.$store.dispatch("fetchEvent", this.id)
   }
-};
+}
 </script>
 
 <style scoped>

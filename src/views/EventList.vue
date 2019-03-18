@@ -8,36 +8,58 @@
       :index="i + 1"
     />
     <base-icon/>
+    <template v-if="page !== 1">
+      <router-link
+        :to="{ name: 'event-list', query: { page: page - 1 } }"
+        rel="prev"
+      >
+        Prev page
+      </router-link> |
+    </template>
+
+    <template v-if="page >= numberOfPages">
+      <router-link
+        :to="{ name: 'event-list', query: { page: page + 1 } }"
+        rel="next"
+      >
+        Next page
+      </router-link>
+    </template>
   </div>
 </template>
 
 <script>
-import EventCard from "@/components/EventCard.vue";
+import EventCard from "@/components/EventCard.vue"
+import { mapState } from "vuex"
 // import axios from 'axios'
-import EventService from "@/services/EventService.js";
+// import EventService from "@/services/EventService.js"
 export default {
   name: "EventList",
   components: {
     EventCard
   },
-  data() {
+  data () {
     return {
-      events: []
-    };
+      perPage: 4
+    }
   },
-  created() {
-    EventService.getEvents()
-      .then(res => {
-        this.events = res.data;
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-    console.log("already created");
+  computed: {
+    ...mapState([
+      "events",
+      "numberOfEvents"
+    ]),
+    page () {
+      return parseInt(this.$route.query.page) || 1
+    },
+    numberOfPages () {
+      return Math.ceil(parseInt(this.numberOfEvents) / 3)
+    }
   },
-  mounted() {
-    console.log("already mounted");
+  created () {
+    this.$store.dispatch("fetchEvents", {
+      perPage: this.perPage,
+      page: this.page
+    })
   }
-};
+}
 </script>
