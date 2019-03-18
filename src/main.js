@@ -1,10 +1,10 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-// import BaseIcon from "@/components/BaseIcon.vue";
-import upperFirst from "lodash/upperFirst";
-import camelCase from "lodash/camelCase";
+import Vue from "vue"
+import App from "./App.vue"
+import router from "./router"
+import store from "./store/store"
+// import BaseIcon from "@/components/BaseIcon.vue"
+import upperFirst from "lodash/upperFirst"
+import camelCase from "lodash/camelCase"
 
 const requireComponent = require.context(
   // Относительный путь до каталога компонентов
@@ -13,7 +13,7 @@ const requireComponent = require.context(
   false,
   // Регулярное выражение для определения файлов базовых компонентов
   /Base[A-Z]\w+\.(vue|js)$/
-);
+)
 
 requireComponent.keys().forEach(fileName => {
   // Получение конфигурации компонента
@@ -28,7 +28,7 @@ requireComponent.keys().forEach(fileName => {
         .pop()
         .replace(/\.\w+$/, "")
     )
-  );
+  )
 
   // Глобальная регистрация компонента
   Vue.component(
@@ -42,10 +42,10 @@ requireComponent.keys().forEach(fileName => {
 
 // Vue.component("BaseIcon", BaseIcon);
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
   render: h => h(App)
-}).$mount("#app");
+}).$mount("#app")
