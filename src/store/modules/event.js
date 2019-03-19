@@ -22,20 +22,39 @@ export const mutations = {
   }
 }
 export const actions = {
-  async createEvent ({ commit }, event) {
-    await EventService.postEvent(event)
-    commit("ADD_EVENT", event)
+  async createEvent ({ commit, dispatch }, event) {
+    try {
+      await EventService.postEvent(event)
+      commit("ADD_EVENT", event)
+      const notification = {
+        type: "success",
+        message: "Your event has been created!!"
+      }
+      dispatch("notification/add", notification, { root: true })
+    } catch (err) {
+      const notification = {
+        type: "error",
+        message: `Create Event Error! ${err.message}`
+      }
+      dispatch("notification/add", notification, { root: true })
+      throw err
+    }
     // return EventService.postEvent(event).then( () => {
     //   commit("ADD_EVENT", event)
     // })
   },
-  async fetchEvents ({ commit }, { perPage, page }) {
+  async fetchEvents ({ commit, dispatch }, { perPage, page }) {
     try {
       const { data, headers } = await EventService.getEvents(perPage, page)
       commit("SET_NUMBER_OF_EVENTS", headers["x-total-count"])
       commit("SET_EVENTS", data)
     } catch (err) {
-      console.log(err)
+      const notification = {
+        type: "error",
+        message: `fetch Events Error!! ${err.message}`
+      }
+      dispatch("notification/add", notification, { root: true })
+      // console.log(err)
     }
     // EventService.getEvents()
     //   .then(res => {
@@ -45,7 +64,7 @@ export const actions = {
     //     console.log(err)
     //   })
   },
-  async fetchEvent ({ commit, getters }, id) {
+  async fetchEvent ({ commit, getters, dispatch }, id) {
     const event = getters.getEventById(id)
     if (event) {
       commit("SET_EVENT", event)
@@ -54,7 +73,12 @@ export const actions = {
         const { data } = await EventService.getEvent(id)
         commit("SET_EVENT", data)
       } catch (err){
-        console.log(err)
+        const notification = {
+          type: "error",
+          message: `fetch Event Error =)) ${err.message}`
+        }
+        dispatch("notification/add", notification, { root: true })
+        // console.log(err)
       }
     }
   }
