@@ -58,6 +58,7 @@
 <script>
 import Datepicker from "vuejs-datepicker"
 import { mapState } from "vuex"
+import NProgress from "nprogress"
 export default {
   name: "EventCreate",
   components: {
@@ -99,9 +100,8 @@ export default {
     },
     async createEvent () {
       try {
-        console.log("createEvent< await")
+        NProgress.start()
         await this.$store.dispatch("event/createEvent", this.event)
-        console.log("createEvent< After await")
         this.$router.push({
           name: "event-show",
           params: { id: this.event.id }
@@ -109,6 +109,7 @@ export default {
         this.event = this.createNewEventObj()
       } catch (err) {
         console.log("There was a problem", err)
+        NProgress.done()
       }
 
       // this.$store.dispatch("createEvent", this.event).then(() => {

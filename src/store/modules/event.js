@@ -5,7 +5,8 @@ export const namespaced = true
 export const state = {
   events: [],
   numberOfEvents: 0,
-  event: {}
+  event: {},
+  perPage: 3
 }
 export const mutations = {
   ADD_EVENT (state, event) {
@@ -43,9 +44,12 @@ export const actions = {
     //   commit("ADD_EVENT", event)
     // })
   },
-  async fetchEvents ({ commit, dispatch }, { perPage, page }) {
+  async fetchEvents ({ commit, dispatch, state }, { page }) {
     try {
-      const { data, headers } = await EventService.getEvents(perPage, page)
+      const { data, headers } = await EventService.getEvents(
+        state.perPage,
+        page
+      )
       commit("SET_NUMBER_OF_EVENTS", headers["x-total-count"])
       commit("SET_EVENTS", data)
     } catch (err) {
@@ -68,10 +72,12 @@ export const actions = {
     const event = getters.getEventById(id)
     if (event) {
       commit("SET_EVENT", event)
+      return event
     } else {
       try {
         const { data } = await EventService.getEvent(id)
         commit("SET_EVENT", data)
+        return data
       } catch (err){
         const notification = {
           type: "error",

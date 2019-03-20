@@ -30,18 +30,40 @@
 </template>
 
 <script>
-import { mapState } from "vuex"
+// import { mapState, mapActions } from "vuex"
+// import NProgress from "nprogress"
+// import store from "@/store/store"
 export default {
   name: "EventShow",
-  props: ["id"],
-  computed: {
-    ...mapState({
-      event: state => state.event.event
-    })
-  },
-  created () {
-    this.$store.dispatch("event/fetchEvent", this.id)
+  props: {
+    id: {
+      type: [
+        String,
+        Number
+      ]
+    },
+    event: {
+      type: Object,
+      required: true
+    }
   }
+  // async beforeRouteEnter (routeTo, routeFrom, next) {
+  //   NProgress.start()
+  //   await store.dispatch("event/fetchEvent", routeTo.params.id)
+  //   NProgress.done()
+  //   next()
+  // },
+  // computed: {
+  //   ...mapState({
+  //     event: state => state.event.event
+  //   })
+  // }
+  // methods: {
+  //   ...mapActions("event", ["fetchEvent"])
+  // },
+  // async created () {
+  //   await this.fetchEvent(this.id)
+  // }
 }
 </script>
 

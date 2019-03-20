@@ -242,6 +242,60 @@
       "date": "2019-03-08T13:19:00.000Z",
       "time": "15:00",
       "attendees": []
+    },
+    {
+      "id": 2911181,
+      "user": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "title": "s",
+      "description": "s",
+      "location": "s",
+      "date": "2019-03-01T14:30:00.000Z",
+      "time": "17:00",
+      "attendees": []
+    },
+    {
+      "id": 6046680,
+      "user": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "category": "food",
+      "organizer": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "title": "ww",
+      "description": "www",
+      "location": "www",
+      "date": "2019-03-07T17:21:00.000Z",
+      "time": "12:00",
+      "attendees": []
+    },
+    {
+      "id": 3613147,
+      "user": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "title": "Super new",
+      "description": "dsds",
+      "location": "London",
+      "date": "2019-03-02T18:16:00.000Z",
+      "time": "15:00",
+      "attendees": []
     }
   ]
 }

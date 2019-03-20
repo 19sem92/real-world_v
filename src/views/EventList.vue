@@ -33,22 +33,46 @@ import EventCard from "@/components/EventCard.vue"
 import { mapState, mapActions } from "vuex"
 // import axios from 'axios'
 // import EventService from "@/services/EventService.js"
+import store from "@/store/store"
+
+async function getPageEvents (routeTo, next) {
+  const currentPage = parseInt(routeTo.query.page) || 1
+  await store.dispatch("event/fetchEvents", {
+    page: currentPage
+  })
+  routeTo.params.page = currentPage
+  next()
+}
 export default {
   name: "EventList",
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     EventCard
   },
-  data () {
-    return {
-      perPage: 3
-    }
+  async beforeRouteEnter (routeTo, routeFrom, next) {
+    console.log("beforeRouteEnter")
+    await getPageEvents(routeTo, next)
   },
+  async beforeRouteUpdate (routeTo, routeFrom, next) {
+    console.log("beforeRouteUpdate")
+    await getPageEvents(routeTo, next)
+  },
+  // data () {
+  //   return {
+  //     perPage: 3
+  //   }
+  // },
   computed: {
-    ...mapState("event", ["events", "numberOfEvents"]),
+    ...mapState("event", ["events", "numberOfEvents", "perPage"]),
     ...mapState(["user"]),
-    page () {
-      return parseInt(this.$route.query.page) || 1
-    },
+    // page () {
+    //   return parseInt(this.$route.query.page) || 1
+    // },
     numberOfPages () {
       return Math.ceil(parseInt(this.numberOfEvents) / this.perPage)
     }
@@ -58,15 +82,15 @@ export default {
       fetchEvents: "event/fetchEvents"
     })
   },
-  async created () {
-    try {
-      await this.fetchEvents({
-        perPage: this.perPage,
-        page: this.page
-      })
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // async created () {
+  //   try {
+  //     await this.fetchEvents({
+  //       perPage: this.perPage,
+  //       page: this.page
+  //     })
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 }
 </script>
