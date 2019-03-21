@@ -49,7 +49,13 @@
         v-model="event.time"
       />
 
-      <input type="submit" class="button -fill-gradient" value="Submit" />
+      <base-button
+        buttonClass="-fill-gradient"
+        type="submit"
+      >
+        Submit
+      </base-button>
+      <!--<input type="submit" class="button -fill-gradient" value="Submit" />-->
     </form>
   </div>
 </template>
@@ -58,11 +64,13 @@
 import Datepicker from "vuejs-datepicker"
 import { mapState } from "vuex"
 import NProgress from "nprogress"
-import BaseInput from "../components/BaseInput";
-import BaseSelect from "../components/BaseSelect";
+import BaseInput from "../components/BaseInput"
+import BaseSelect from "../components/BaseSelect"
+import BaseButton from "../components/BaseButton"
 export default {
   name: "EventCreate",
   components: {
+    BaseButton,
     BaseSelect,
     BaseInput,
     Datepicker
