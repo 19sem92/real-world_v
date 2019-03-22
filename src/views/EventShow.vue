@@ -1,5 +1,6 @@
 <template>
   <div>
+    <base-button @click="removeEvent">Delete<base-button/>
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
@@ -33,8 +34,10 @@
 // import { mapState, mapActions } from "vuex"
 // import NProgress from "nprogress"
 // import store from "@/store/store"
+import BaseButton from "../components/BaseButton";
 export default {
   name: "EventShow",
+  components: {BaseButton},
   props: {
     id: {
       type: [
@@ -45,6 +48,11 @@ export default {
     event: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    removeEvent () {
+
     }
   }
   // async beforeRouteEnter (routeTo, routeFrom, next) {

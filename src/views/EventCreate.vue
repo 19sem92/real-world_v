@@ -3,11 +3,20 @@
     <h1>Create an Event</h1>
     <form @submit.prevent="createEvent">
       <base-select
-        class="field"
         label="Select a category"
         :options="categories"
         v-model="event.category"
+        :class="{ error: $v.event.category.$error }"
+        @blur="$v.event.category.$touch()"
       />
+      <template v-if="$v.event.category.$error">
+        <p
+          v-if="!$v.event.category.required"
+          class="errorMessage"
+        >
+          Category is required
+        </p>
+      </template>
 
       <h3>Name & describe your event</h3>
       <base-input
@@ -16,7 +25,18 @@
         type="text"
         placeholder="Add an event title"
         v-model="event.title"
+        :class="{ error: $v.event.title.$error }"
+        @blur="$v.event.title.$touch()"
       />
+
+      <template v-if="$v.event.title.$error">
+        <p
+                v-if="!$v.event.title.required"
+                class="errorMessage"
+        >
+          Title is required
+        </p>
+      </template>
 
       <base-input
         class="field"
@@ -47,7 +67,17 @@
         label="Select a category"
         :options="times"
         v-model="event.time"
+        :class="{ error: $v.event.time.$error }"
+        @blur="$v.event.time.$touch()"
       />
+      <template v-if="$v.event.time.$error">
+        <p
+          v-if="!$v.event.time.required"
+          class="errorMessage"
+        >
+          Time is required
+        </p>
+      </template>
 
       <base-button
         buttonClass="-fill-gradient"
@@ -67,6 +97,7 @@ import NProgress from "nprogress"
 import BaseInput from "../components/BaseInput"
 import BaseSelect from "../components/BaseSelect"
 import BaseButton from "../components/BaseButton"
+import { required } from "vuelidate/lib/validators"
 export default {
   name: "EventCreate",
   components: {
@@ -134,6 +165,16 @@ export default {
       //   .catch(() => {
       //     console.log("There was a problem")
       // })
+    }
+  },
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      description: { required },
+      location: { required },
+      date: { required },
+      time: { required }
     }
   }
 }
