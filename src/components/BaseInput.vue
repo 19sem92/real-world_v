@@ -4,7 +4,7 @@
     <input
       :value="value"
       @input="updateValue"
-      v-on="$listeners"
+      v-on="listeners"
       v-bind="$attrs"
     />
   </div>
@@ -20,6 +20,15 @@ export default {
       default: ""
     },
     value: [String, Number]
+  },
+  computed: {
+    listeners () {
+      console.log(this.$listeners, "this.$listeners")
+      return {
+        ...this.$listeners,
+        input: this.updateValue
+      }
+    }
   },
   methods: {
     updateValue (event) {

@@ -31,8 +31,8 @@
 
       <template v-if="$v.event.title.$error">
         <p
-                v-if="!$v.event.title.required"
-                class="errorMessage"
+          v-if="!$v.event.title.required"
+          class="errorMessage"
         >
           Title is required
         </p>
@@ -44,7 +44,18 @@
         type="text"
         placeholder="Add a description"
         v-model="event.description"
+        :class="{ error: $v.event.description.$error }"
+        @blur="$v.event.description.$touch()"
       />
+
+      <template v-if="$v.event.description.$error">
+        <p
+          v-if="!$v.event.description.required"
+          class="errorMessage"
+        >
+          Description is required
+        </p>
+      </template>
 
       <h3>Where is your event?</h3>
       <base-input
@@ -53,14 +64,39 @@
         type="text"
         placeholder="Add a location"
         v-model="event.location"
+        :class="{ error: $v.event.location.$error }"
+        @blur="$v.event.location.$touch()"
       />
+
+      <template v-if="$v.event.location.$error">
+        <p
+          v-if="!$v.event.location.required"
+          class="errorMessage"
+        >
+          Location is required
+        </p>
+      </template>
 
       <h3>When is your event?</h3>
 
       <div class="field">
         <label>Date</label>
-        <datepicker v-model="event.date" placeholder="Select a date" />
+        <datepicker
+          v-model="event.date"
+          placeholder="Select a date"
+          :input-class="{ error: $v.event.date.$error }"
+          @opened="$v.event.description.$touch()"
+        />
       </div>
+
+      <template v-if="$v.event.date.$error">
+        <p
+          v-if="!$v.event.date.required"
+          class="errorMessage"
+        >
+          Date is required
+        </p>
+      </template>
 
       <base-select
         class="field"
@@ -82,6 +118,7 @@
       <base-button
         buttonClass="-fill-gradient"
         type="submit"
+        :disabled="$v.$anyError"
       >
         Submit
       </base-button>
@@ -141,6 +178,8 @@ export default {
       }
     },
     async createEvent () {
+      this.$v.$touch()
+      if (this.$v.$invalid) return
       try {
         NProgress.start()
         await this.$store.dispatch("event/createEvent", this.event)

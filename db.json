@@ -103,24 +103,6 @@
       "attendees": []
     },
     {
-      "id": 7061781,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "housing",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "yyy",
-      "description": "yyyy",
-      "location": "yyyy",
-      "date": "2019-03-08T13:19:00.000Z",
-      "time": "15:00",
-      "attendees": []
-    },
-    {
       "id": 2911181,
       "user": {
         "id": "abc123",
@@ -172,6 +154,24 @@
       "location": "London",
       "date": "2019-03-02T18:16:00.000Z",
       "time": "15:00",
+      "attendees": []
+    },
+    {
+      "id": 7138935,
+      "user": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "category": "animal welfare",
+      "organizer": {
+        "id": "abc123",
+        "name": "Sergey Chirva"
+      },
+      "title": "Event=))",
+      "description": "Event in Kyiv",
+      "location": "Kyiv",
+      "date": "2019-04-11T10:14:00.000Z",
+      "time": "16:00",
       "attendees": []
     }
   ]
