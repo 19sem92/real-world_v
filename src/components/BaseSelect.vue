@@ -13,24 +13,14 @@
 </template>
 
 <script>
+import { formFieldMixin } from "../mixins/formFieldMixin"
 export default {
-  inheritAttrs: false,
+  mixins: [formFieldMixin],
   name: "BaseSelect",
   props: {
     options: {
       type: Array,
       required: true
-    },
-    label: {
-      type: String,
-      default: ""
-    },
-    value: [String, Number]
-  },
-  methods: {
-    updateValue (event) {
-      this.$emit("input", event.target.value)
-      console.log(this.value, "<<")
     }
   }
 }
