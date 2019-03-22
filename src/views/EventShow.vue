@@ -1,6 +1,5 @@
 <template>
   <div>
-    <base-button @click="removeEvent">Delete<base-button/>
     <div class="event-header">
       <span class="eyebrow">@{{ event.time }} on {{ event.date }}</span>
       <h1 class="title">{{ event.title }}</h1>
@@ -27,17 +26,21 @@
       </li>
     </ul>
     <p>Event Show {{ $route.params.id }} = {{ id }}</p>
+    <base-button
+      @click="removeEvent"
+      buttonClass="-delete"
+    >
+      Delete
+    </base-button>
   </div>
 </template>
 
 <script>
-// import { mapState, mapActions } from "vuex"
+import { mapActions } from "vuex"
 // import NProgress from "nprogress"
 // import store from "@/store/store"
-import BaseButton from "../components/BaseButton";
 export default {
   name: "EventShow",
-  components: {BaseButton},
   props: {
     id: {
       type: [
@@ -51,8 +54,15 @@ export default {
     }
   },
   methods: {
-    removeEvent () {
-
+    ...mapActions("event", ["deleteEvent"]),
+    async removeEvent () {
+      try {
+        await this.deleteEvent(this.id)
+        // this.$router.push({ name: "event-list" })
+        this.$router.go(-1)
+      } catch (err) {
+        console.warn(`delete error: ${err}`)
+      }
     }
   }
   // async beforeRouteEnter (routeTo, routeFrom, next) {

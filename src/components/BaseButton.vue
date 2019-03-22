@@ -63,6 +63,10 @@ export default {
   background: linear-gradient(to right, #16c0b0, #84cf6a);
   color: #ffffff;
 }
+.button.-delete {
+  background: linear-gradient(to right, #c00504, #cf004f);
+  color: #000;
+}
 .button.-fill-gray {
   background: rgba(0, 0, 0, 0.5);
   color: #ffffff;

@@ -12,6 +12,9 @@ export const mutations = {
   ADD_EVENT (state, event) {
     state.events.push(event)
   },
+  REMOVE_EVENT (state, id) {
+    state.events = state.events.filter(event => event.id !== id)
+  },
   SET_EVENTS (state, events) {
     state.events = events
   },
@@ -86,6 +89,23 @@ export const actions = {
         dispatch("notification/add", notification, { root: true })
         // console.log(err)
       }
+    }
+  },
+  async deleteEvent ({ commit, dispatch }, id) {
+    try {
+      await EventService.deleteEvent(id)
+      commit("REMOVE_EVENT", id)
+      const notification = {
+        type: "success",
+        message: "Your event has been deleted! =))) "
+      }
+      dispatch("notification/add", notification, { root: true })
+    } catch (err) {
+      const notification = {
+        type: "error",
+        message: `Delete Event Error =)) ${err.message}`
+      }
+      dispatch("notification/add", notification, { root: true })
     }
   }
 }

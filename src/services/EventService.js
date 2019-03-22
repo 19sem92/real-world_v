@@ -30,6 +30,9 @@ export default {
   getEvent (id) {
     return apiClient.get(`/events/${id}`)
   },
+  deleteEvent (id) {
+    return apiClient.delete(`/events/${id}`)
+  },
   postEvent (event) {
     return apiClient.post("/events", event)
   }

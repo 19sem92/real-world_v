@@ -1,21 +1,6 @@
 {
   "events": [
     {
-      "id": 5928101,
-      "user": {
-        "id": "abc123",
-        "name": "Adam"
-      },
-      "category": "animal welfare",
-      "organizer": "Adam",
-      "title": "Cat Cabaret",
-      "description": "Yay felines!",
-      "location": "Meow Town",
-      "date": "2019-01-03T21:54:00.000Z",
-      "time": "2:00",
-      "attendees": []
-    },
-    {
       "id": 8419988,
       "user": {
         "id": "abc123",
@@ -46,78 +31,6 @@
       "attendees": []
     },
     {
-      "id": 1057298,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "nature",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "New",
-      "description": "Description",
-      "location": "Kyiv",
-      "date": "2019-03-01T13:49:00.000Z",
-      "time": "15:00",
-      "attendees": []
-    },
-    {
-      "id": 9815435,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "animal welfare",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "ывыв",
-      "description": "ывывыв",
-      "location": "ывывыв",
-      "date": "2019-03-01T13:58:00.000Z",
-      "time": "12:00",
-      "attendees": []
-    },
-    {
-      "id": 4694963,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "education",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "q",
-      "description": "q",
-      "location": "q",
-      "date": "2019-03-06T14:10:00.000Z",
-      "time": "17:00",
-      "attendees": []
-    },
-    {
-      "id": 741586,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "animal welfare",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "newww",
-      "description": "Sww",
-      "location": "L",
-      "date": "2019-03-14T14:14:00.000Z",
-      "time": "14:00",
-      "attendees": []
-    },
-    {
       "id": 2646884,
       "user": {
         "id": "abc123",
@@ -133,24 +46,6 @@
       "location": "Location Kyiv",
       "date": "2019-03-06T16:11:00.000Z",
       "time": "14:00",
-      "attendees": []
-    },
-    {
-      "id": 8764885,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "education",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "p[iopoi",
-      "description": "hjhjhj",
-      "location": "hjhjhjhjhjhjhjh",
-      "date": "2019-03-14T17:28:00.000Z",
-      "time": "16:00",
       "attendees": []
     },
     {
@@ -185,24 +80,6 @@
       "title": "sds",
       "description": "sdsd",
       "location": "sdssd",
-      "date": "",
-      "time": "",
-      "attendees": []
-    },
-    {
-      "id": 7382676,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "",
-      "description": "",
-      "location": "",
       "date": "",
       "time": "",
       "attendees": []
@@ -295,78 +172,6 @@
       "location": "London",
       "date": "2019-03-02T18:16:00.000Z",
       "time": "15:00",
-      "attendees": []
-    },
-    {
-      "id": 6550053,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "dfdfdfdfffff",
-      "description": "",
-      "location": "",
-      "date": "",
-      "time": "",
-      "attendees": []
-    },
-    {
-      "id": 8039209,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "animal welfare",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "",
-      "description": "",
-      "location": "",
-      "date": "",
-      "time": "7:00",
-      "attendees": []
-    },
-    {
-      "id": 8769355,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "",
-      "description": "",
-      "location": "",
-      "date": "",
-      "time": "",
-      "attendees": []
-    },
-    {
-      "id": 3635202,
-      "user": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "category": "",
-      "organizer": {
-        "id": "abc123",
-        "name": "Sergey Chirva"
-      },
-      "title": "",
-      "description": "",
-      "location": "",
-      "date": "",
-      "time": "",
       "attendees": []
     }
   ]
